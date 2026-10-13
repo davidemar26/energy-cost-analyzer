@@ -1,6 +1,19 @@
 
 import csv
 
+def calcola_media(valori):
+    if(len(valori)) == 0:
+        return 0;
+        
+    return sum(valori) / len(valori)
+
+def calcola_statistiche(consumi, costi):
+    consumo_totale = sum(consumi)
+    consumo_medio = calcola_media(consumi)
+    costo_medio = calcola_media(costi)
+
+    return consumo_totale, consumo_medio, costo_medio
+
 nome_file = "risultati_energia.csv"
 
 mesi = []
@@ -73,6 +86,11 @@ try:
                     print("  Variazione: N/D (costo precedente zero)")
 
         print(f"\nCosto complessivo: {sum(costi):.2f} euro")
+
+        totale_kwh, media_kwh, media_euro = calcola_statistiche(consumi, costi)
+        print(f"Consumo totale: {totale_kwh:.2f} kWh")
+        print(f"Consumo medio mensile: {media_kwh:.2f} kWh")
+        print(f"Costo medio mensile: {media_euro:.2f} euro")
 
         indice_massimo = costi.index(max(costi))
         print(f"Mese più costoso: {mesi[indice_massimo]}")
