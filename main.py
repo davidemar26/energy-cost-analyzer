@@ -53,10 +53,28 @@ try:
                 f"{costi[i]:.2f} euro"
             )
 
+            if i > 0:
+                costo_precedente = costi[i - 1]
+
+                if costo_precedente > 0:
+                    variazione = (
+                        (costi[i] - costo_precedente)
+                        / costo_precedente
+                    ) * 100
+
+                    if variazione > 0:
+                        print(f"  Aumento: +{variazione:.1f}%")
+                    elif variazione < 0:
+                        print(f"  Diminuzione: {variazione:.1f}%")
+                    else:
+                        print("  Variazione: 0.0%")
+
+                else:
+                    print("  Variazione: N/D (costo precedente zero)")
+
         print(f"\nCosto complessivo: {sum(costi):.2f} euro")
 
         indice_massimo = costi.index(max(costi))
-
         print(f"Mese più costoso: {mesi[indice_massimo]}")
 
 except FileNotFoundError:
