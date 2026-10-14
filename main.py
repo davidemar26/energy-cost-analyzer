@@ -1,6 +1,6 @@
 
 import csv
-
+from validazione import valida_mese, valida_valori
 from statistiche import calcola_statistiche
 
 
@@ -20,12 +20,7 @@ def numero_mese(nome_mese):
         "dicembre": 12
     }
 
-    nome_mese = nome_mese.strip().lower()
-
-    if nome_mese not in mesi_ordine:
-        raise ValueError(f"Mese non riconosciuto: {nome_mese}")
-
-    return mesi_ordine[nome_mese]
+    return mesi_ordine[nome_mese.strip().lower()]
 
 
 nome_file = "risultati_energia.csv"
@@ -48,21 +43,10 @@ try:
                 consumo_kwh = float(riga["Consumo_kWh"])
                 prezzo_kwh = float(riga["Prezzo_euro_kWh"])
 
-                if consumo_kwh < 0 or prezzo_kwh < 0:
-                    raise ValueError(
-                        "Consumo e prezzo non possono essere negativi."
-                    )
+                nome_normalizzato = valida_mese(nome_mese, mesi_visti)
+                valida_valori(consumo_kwh, prezzo_kwh)
 
-                numero_mese(nome_mese)
-
-                mese_normalizzato = nome_mese.lower()
-
-                if mese_normalizzato in mesi_visti:
-                    raise ValueError(
-                        f"Mese duplicato: {nome_mese}"
-                    )
-
-                mesi_visti.add(mese_normalizzato)
+                mesi_visti.add(nome_normalizzato)
 
             except (ValueError, KeyError, AttributeError) as errore:
                 raise ValueError(
