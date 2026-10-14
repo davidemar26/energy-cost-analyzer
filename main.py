@@ -30,6 +30,7 @@ def numero_mese(nome_mese):
 
 nome_file = "risultati_energia.csv"
 dati_mensili = []
+mesi_visti = set()
 
 try:
     with open(
@@ -53,6 +54,15 @@ try:
                     )
 
                 numero_mese(nome_mese)
+
+                mese_normalizzato = nome_mese.lower()
+
+                if mese_normalizzato in mesi_visti:
+                    raise ValueError(
+                        f"Mese duplicato: {nome_mese}"
+                    )
+
+                mesi_visti.add(mese_normalizzato)
 
             except (ValueError, KeyError, AttributeError) as errore:
                 raise ValueError(
