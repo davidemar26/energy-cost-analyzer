@@ -2,6 +2,7 @@
 import pytest
 
 from validazione import valida_mese, valida_valori
+from validazione import valida_campi
 
 
 def test_mese_valido():
@@ -25,3 +26,18 @@ def test_consumo_negativo():
 
 def test_valori_validi():
     valida_valori(120, 0.25)
+
+
+
+def test_campi_validi():
+    valida_campi("Gennaio", "120", "0.25")
+
+
+def test_consumo_mancante():
+    with pytest.raises(ValueError, match="Consumo in kWh mancante"):
+        valida_campi("Gennaio", "", "0.25")
+
+
+def test_prezzo_mancante():
+    with pytest.raises(ValueError, match="Prezzo per kWh mancante"):
+        valida_campi("Gennaio", "120", "")

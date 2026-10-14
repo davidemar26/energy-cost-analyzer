@@ -1,6 +1,6 @@
 
 import csv
-from validazione import valida_mese, valida_valori
+from validazione import valida_mese, valida_valori, valida_campi
 from statistiche import calcola_statistiche
 
 
@@ -39,14 +39,22 @@ try:
 
         for numero_riga, riga in enumerate(lettore, start=2):
             try:
-                nome_mese = riga["Mese"].strip()
-                consumo_kwh = float(riga["Consumo_kWh"])
-                prezzo_kwh = float(riga["Prezzo_euro_kWh"])
+                
+             nome_mese = riga["Mese"]
+             consumo_testo = riga["Consumo_kWh"]
+             prezzo_testo = riga["Prezzo_euro_kWh"]
 
-                nome_normalizzato = valida_mese(nome_mese, mesi_visti)
-                valida_valori(consumo_kwh, prezzo_kwh)
+             valida_campi(nome_mese, consumo_testo, prezzo_testo)
 
-                mesi_visti.add(nome_normalizzato)
+             nome_mese = nome_mese.strip()
+             consumo_kwh = float(consumo_testo)
+             prezzo_kwh = float(prezzo_testo)
+
+             nome_normalizzato = valida_mese(nome_mese, mesi_visti)
+             valida_valori(consumo_kwh, prezzo_kwh)
+
+             mesi_visti.add(nome_normalizzato)
+
 
             except (ValueError, KeyError, AttributeError) as errore:
                 raise ValueError(

@@ -31,3 +31,14 @@ def valida_valori(consumo, prezzo):
         raise ValueError(
             "Consumo e prezzo non possono essere negativi."
         )
+
+
+def valida_campi(nome_mese, consumo_testo, prezzo_testo):
+    if not nome_mese.strip():
+        raise ValueError("Nome del mese mancante.")
+
+    if not consumo_testo.strip():
+        raise ValueError("Consumo in kWh mancante.")
+
+    if not prezzo_testo.strip():
+        raise ValueError("Prezzo per kWh mancante.")
