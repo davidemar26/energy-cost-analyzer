@@ -1,45 +1,98 @@
-Energy Cost Analyzer
+# Energy Cost Analyzer ⚡
 
-A Python project for analyzing energy consumption and estimating electricity costs.
+A Python project for analyzing monthly energy consumption and costs from CSV data.
 
-Current features
+The project includes a command-line analysis tool and an interactive web dashboard built with Streamlit.
 
--Accepts energy consumption in kWh.
+## Features
 
--Accepts the price per kWh.
+- Read energy data from a CSV file.
+- Validate input data and detect invalid or duplicate months.
+- Calculate total consumption, average consumption, and average costs.
+- Identify the month with the highest energy cost.
+- Analyze data using Pandas.
+- Visualize monthly energy costs with charts.
+- Filter dashboard data by month.
+- Download filtered data as a CSV file.
+- Run automated tests with pytest.
 
--Calculates the total cost.
+## Technologies
 
--Displays the result with two decimal places.
+- Python
+- Pandas
+- Matplotlib
+- Streamlit
+- pytest
+- CSV
 
-Example
+## Project structure
 
-Input:
+```text
+energy-cost-analyzer/
+├── main.py
+├── app.py
+├── statistiche.py
+├── validazione.py
+├── test_statistiche.py
+├── test_validazione.py
+├── prova_pandas.py
+├── risultati_energia.csv
+├── README.md
+└── .gitignore
+```
 
--Consumption: 120 kWh
+## Requirements
 
--Price: €0.25/kWh
+- Python 3.13
+- pip
 
-Output:
+## Installation
 
--Total cost: €30.00
+Clone the repository and enter the project directory:
 
-Technologies
+```bash
+git clone https://github.com/davidemar26/energy-cost-analyzer
+cd energy-cost-analyzer
+```
 
--Python
+Create a virtual environment:
 
-Planned improvements
+```powershell
+py -3.13 -m venv .venv
+```
 
--Analyze consumption across multiple months.
+Install the required libraries:
 
--Import data from CSV files.
+```powershell
+.\.venv\Scripts\python.exe -m pip install pandas matplotlib streamlit pytest
+```
 
--Calculate statistics and generate charts.
+## Run the command-line analyzer
 
--Add automated tests.
+```powershell
+.\.venv\Scripts\python.exe main.py
+```
 
--Build an interactive dashboard.
+## Run the dashboard
 
-Purpose
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
 
-This project is being developed as a practical learning exercise in Python, data analysis, and software development.
+Streamlit will open the dashboard in your browser.
+
+## Run the tests
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -v
+```
+
+## Learning goals
+
+This project was developed to practice Python programming, input validation, automated testing, data analysis with Pandas, data visualization, and interactive dashboard development.
+
+## Future improvements
+
+- Improve error handling and data quality checks.
+- Add more energy consumption and cost visualizations.
+- Improve the dashboard layout and usability.
