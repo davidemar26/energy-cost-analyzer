@@ -8,7 +8,7 @@ The project includes a command-line analysis tool and an interactive web dashboa
 
 Ecco un'anteprima dell'applicazione:
 
-![Energy Cost Analyzer Dashboard](screenshots/dashboard.png)
+![Energy Cost Analyzer Dashboard](screenshots/dashboard.jpeg)
 
 ## Features
 
