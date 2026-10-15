@@ -4,6 +4,12 @@ A Python project for analyzing monthly energy consumption and costs from CSV dat
 
 The project includes a command-line analysis tool and an interactive web dashboard built with Streamlit.
 
+## Dashboard
+
+Ecco un'anteprima dell'applicazione:
+
+![Energy Cost Analyzer Dashboard](screenshots/dashboard.png)
+
 ## Features
 
 - Read energy data from a CSV file.
